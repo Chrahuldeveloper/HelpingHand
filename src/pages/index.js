@@ -1,4 +1,5 @@
 import Home from './Home'
+import Start from './Start'
 
 
-export { Home }
+export { Home , Start }
