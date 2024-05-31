@@ -18,7 +18,7 @@ export default function Start() {
           <h1 className="text-2xl md:text-4xl md:max-w-md leading-8 font-bold">
             Start fundraising on GoFundMe
           </h1>
-          <p className="leading-9 max-w-md text-xl  ">
+          <p className="leading-9 max-w-md text-xl">
             Everything you need to help your fundraiser succeed is here. Start
             fundraising on the #1 crowdfunding platform today
           </p>
