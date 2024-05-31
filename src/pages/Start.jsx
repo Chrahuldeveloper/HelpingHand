@@ -14,7 +14,7 @@ export default function Start() {
             alt=""
           />
         </div>
-        <div className="space-y-5 p-5 md:translate-x-28 md:bg-white md:rounded-md z-50">
+        <div className="space-y-5 p-5 md:translate-x-28 md:bg-white md:rounded-md z-50 border-[1px] border-gray-100">
           <h1 className="text-2xl md:text-4xl md:max-w-md leading-8 font-bold">
             Start fundraising on GoFundMe
           </h1>
@@ -22,7 +22,7 @@ export default function Start() {
             Everything you need to help your fundraiser succeed is here. Start
             fundraising on the #1 crowdfunding platform today
           </p>
-          <button className="px-9 py-1.5 rounded-full bg-green-600 text-white font-semibold text-sm">
+          <button className="px-9 py-2 rounded-full bg-green-600 text-white font-semibold text-sm">
             Go Donate
           </button>
         </div>
