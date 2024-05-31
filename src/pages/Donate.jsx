@@ -1,9 +1,11 @@
 import React from "react";
+import { Navbar } from "../components";
 
 export default function Donate() {
   return (
     <>
-      <div className="flex flex-col gap-3 md:max-w-xl  md:ml-48">
+      <Navbar />
+      <div className="flex flex-col gap-3 md:max-w-xl  mx-auto">
         <h1 className="order-2 px-6 text-lg font-semibold">
           Help us evacuate Gaza to survive from the war!
         </h1>
@@ -15,7 +17,7 @@ export default function Donate() {
           />
         </div>
       </div>
-      <div className="flex flex-col justify-center mx-3 gap-3 mt-5 md:max-w-xl md:ml-48">
+      <div className="flex flex-col justify-center mx-3 gap-3 mt-5 md:max-w-xl md:mx-auto">
         <button className="bg-gradient-to-r from-amber-500 via-yellow-500 to-yellow-500 py-3 font-semibold rounded-full md:hidden">
           Share
         </button>
