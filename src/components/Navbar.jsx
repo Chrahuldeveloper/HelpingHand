@@ -1,27 +1,32 @@
 import React, { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
-
+import { Link } from "react-router-dom";
 export default function Navbar() {
   const [istoggle, setistoggle] = useState(false);
 
   return (
     <>
-      <div className="p-5 border-[1px] rounded-full lg:max-w-5xl mx-auto my-3 hidden  lg:flex justify-between">
-        <ul className="flex items-center gap-4 px-4 text-gray-500 text-sm">
-          <li className="cursor-pointer">Donate</li>
-          <li className="cursor-pointer">FundRaise</li>
+      <div className="p-5 border-[1px] rounded-full lg:max-w-5xl mx-auto my-3 hidden lg:flex justify-between">
+        <ul className="flex items-center gap-4 px-4 text-sm text-gray-700">
+          <h1 className="text-xl font-semibold text-green-700">HelpingHand</h1>
+          <Link to="/start">
+            <li className="font-semibold cursor-pointer">Donate</li>
+          </Link>
+          <li className="font-semibold cursor-pointer">FundRaise</li>
         </ul>
         <div>
-          <button className="rounded-full border-[1.2px] border-gray-300 px-10 py-1.5 text-sm font-semibold hover:bg-green-500 hover:text-white ease-in-out duration-500">
-            Signup
-          </button>
+          <Link to={"/Signin"}>
+            <button className="rounded-full border-[1.2px] border-gray-300 px-10 py-1.5 text-sm font-semibold hover:bg-green-500 hover:text-white ease-in-out duration-500">
+              Signup
+            </button>
+          </Link>
         </div>
       </div>
 
-      <div className="p-5 md:hidden flex justify-between">
+      <div className="flex justify-between p-5 md:hidden">
         <div>
-          <h1 className="text-green-700 font-semibold text-lg">HelpingHand</h1>
+          <h1 className="text-lg font-semibold text-green-700">HelpingHand</h1>
         </div>
         <div>
           <CiMenuFries
@@ -47,14 +52,24 @@ export default function Navbar() {
               />
             </div>
             <ul className="space-y-5">
-              <li className="cursor-pointer space-y-2 bg-gray-50 p-3 rounded-lg mt-5">
-                <h1 className=" text-lg">Donate</h1>
-                <p className="text-xs">
-                  Lorem ipsum dolor sit amet consectetur adipisicing.
-                </p>
-              </li>
-              <li className="cursor-pointer space-y-2 bg-gray-50 p-3 rounded-lg">
-                <h1 className=" text-lg">FundRaise</h1>
+              <Link to={"/Signin"}>
+                <li className="p-3 space-y-2 rounded-lg cursor-pointer bg-gray-50">
+                  <h1 className="text-lg ">SignUp</h1>
+                  <p className="text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing.
+                  </p>
+                </li>
+              </Link>
+              <Link to="/start">
+                <li className="p-3 mt-5 space-y-2 rounded-lg cursor-pointer bg-gray-50">
+                  <h1 className="text-lg ">Donate</h1>
+                  <p className="text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing.
+                  </p>
+                </li>
+              </Link>
+              <li className="p-3 space-y-2 rounded-lg cursor-pointer bg-gray-50">
+                <h1 className="text-lg ">FundRaise</h1>
                 <p className="text-xs">
                   Lorem ipsum dolor sit amet consectetur adipisicing.
                 </p>

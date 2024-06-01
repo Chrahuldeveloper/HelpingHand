@@ -31,7 +31,6 @@ export default function Donate() {
         >
           Donate Now
         </button>
-
         <div className="my-1 mb-5">
           <p className="px-3">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. At quod

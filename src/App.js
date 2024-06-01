@@ -9,7 +9,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/start" element={<Start />} />
       <Route path="/Signin" element={<Signin />} />
-      <Route path="/Donate" element={<Donate />} />
+      <Route path="/Donate/:id" element={<Donate />} />
     </Routes>
   );
 }
