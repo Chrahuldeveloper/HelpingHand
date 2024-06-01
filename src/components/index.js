@@ -1,4 +1,5 @@
-import Navbar from './Navbar'
-import DonateModel from './DonateModel'
+import Navbar from "./Navbar";
+import DonateModel from "./DonateModel";
+import Loader from "./Loader";
 
-export {Navbar , DonateModel}
+export { Navbar, DonateModel, Loader };
