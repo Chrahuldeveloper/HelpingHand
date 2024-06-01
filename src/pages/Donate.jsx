@@ -23,9 +23,12 @@ export default function Donate() {
         <button className="py-3 font-semibold rounded-full bg-gradient-to-r from-amber-500 via-yellow-500 to-yellow-500 md:hidden">
           Share
         </button>
-        <button onClick={()=>{
-          setistoggle(true)
-        }} className="py-3 font-semibold rounded-full bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 md:hidden">
+        <button
+          onClick={() => {
+            setistoggle(true);
+          }}
+          className="py-3 font-semibold rounded-full bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 md:hidden"
+        >
           Donate Now
         </button>
 
@@ -43,7 +46,12 @@ export default function Donate() {
             quae qui incidunt fugit placeat ipsum nobis cum iusto. Eaque, porro.
           </p>
           <div className="flex items-center justify-center gap-4 mt-3 ">
-            <button className="border-[1px] px-20 py-2 rounded-xl border-gray-500 md:hidden">
+            <button
+              onClick={() => {
+                setistoggle(true);
+              }}
+              className="border-[1px] px-20 py-2 rounded-xl border-gray-500 md:hidden"
+            >
               Donate
             </button>
             <button className="border-[1px] px-20 py-2 rounded-xl border-gray-500 md:hidden">
@@ -52,7 +60,12 @@ export default function Donate() {
             <button className="hidden px-24 py-3 font-semibold rounded-full bg-gradient-to-r from-amber-500 via-yellow-500 to-yellow-500 md:block">
               Share
             </button>
-            <button className="hidden px-24 py-3 font-semibold rounded-full bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 md:block">
+            <button
+              onClick={() => {
+                setistoggle(true);
+              }}
+              className="hidden px-24 py-3 font-semibold rounded-full bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 md:block"
+            >
               Donate Now
             </button>
           </div>
