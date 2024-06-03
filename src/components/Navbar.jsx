@@ -10,10 +10,12 @@ export default function Navbar() {
       <div className="p-5 border-[1px] rounded-full lg:max-w-5xl mx-auto my-3 hidden lg:flex justify-between">
         <ul className="flex items-center gap-4 px-4 text-sm text-gray-700">
           <h1 className="text-xl font-semibold text-green-700">HelpingHand</h1>
-          <Link to="/start">
+          <Link to="/Donate">
             <li className="font-semibold cursor-pointer">Donate</li>
           </Link>
-          <li className="font-semibold cursor-pointer">FundRaise</li>
+          <Link to="/start">
+            <li className="font-semibold cursor-pointer">FundRaise</li>
+          </Link>
         </ul>
         <div>
           <Link to={"/Signin"}>
@@ -60,7 +62,7 @@ export default function Navbar() {
                   </p>
                 </li>
               </Link>
-              <Link to="/start">
+              <Link to="/Donate">
                 <li className="p-3 mt-5 space-y-2 rounded-lg cursor-pointer bg-gray-50">
                   <h1 className="text-lg ">Donate</h1>
                   <p className="text-xs">
@@ -68,12 +70,14 @@ export default function Navbar() {
                   </p>
                 </li>
               </Link>
-              <li className="p-3 space-y-2 rounded-lg cursor-pointer bg-gray-50">
-                <h1 className="text-lg ">FundRaise</h1>
-                <p className="text-xs">
-                  Lorem ipsum dolor sit amet consectetur adipisicing.
-                </p>
-              </li>
+              <Link to="/start">
+                <li className="p-3 space-y-2 rounded-lg cursor-pointer bg-gray-50">
+                  <h1 className="text-lg ">FundRaise</h1>
+                  <p className="text-xs">
+                    Lorem ipsum dolor sit amet consectetur adipisicing.
+                  </p>
+                </li>
+              </Link>
             </ul>
           </aside>
         </div>

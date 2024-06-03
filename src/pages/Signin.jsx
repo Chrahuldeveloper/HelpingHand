@@ -1,7 +1,7 @@
 import React, { useId, useRef, useState } from "react";
-import { db, storage } from "../Firebase"; 
+import { db, storage } from "../Firebase";
 import { doc, setDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; 
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Loader } from "../components";
 
 export default function Signin() {
