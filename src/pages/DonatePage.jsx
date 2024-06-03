@@ -23,7 +23,7 @@ export default function DonatePage() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <>
