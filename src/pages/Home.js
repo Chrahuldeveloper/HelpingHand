@@ -14,24 +14,34 @@ export default function Home() {
       img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
       Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
     },
+    {
+      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
+      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
+    },
+    {
+      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
+      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
+    },
+    {
+      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
+      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
+    },
   ];
 
   return (
     <>
       <Navbar />
-
       <div className="px-8 mt-4 md:px-32">
-        <h1 className="text-lg font-semibold md:text-xl">Featured Donates</h1>
+        <h1 className="text-lg font-semibold md:text-2xl">Featured Donates</h1>
       </div>
-
-      <div className="flex flex-col items-center justify-center mt-2 md:flex-row">
+      <div className="flex flex-col items-center justify-center grid-cols-3 mt-2 md:flex-row md:grid place-items-center md:px-12">
         {featuredCards.map((_, i) => {
           return (
             <React.Fragment key={i}>
               <div className="p-5 space-y-2.5">
                 <img
                   src={_.img}
-                  className="max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
+                  className="max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer md:max-w-md hover:brightness-75"
                   alt=""
                 />
                 <h1 className="text-lg font-semibold underline">{_.Tittle}</h1>

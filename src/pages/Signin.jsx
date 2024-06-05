@@ -15,6 +15,7 @@ export default function Signin() {
     Password: "",
     Location: "",
     Ngo: "",
+    story: "",
     qr: "",
   });
 
@@ -118,6 +119,7 @@ export default function Signin() {
             value={data.Ngo}
             onChange={(e) => setData({ ...data, Ngo: e.target.value })}
           />
+         
           <input
             type="text"
             className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl "
