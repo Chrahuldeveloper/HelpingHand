@@ -1,13 +1,52 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db, storage } from "../Firebase";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 
 export default function FundRaiseModel({ settoggle }) {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+  const [title, setTitle] = useState("");
+  const [story, setStory] = useState("");
+
+  const jwt = localStorage.getItem("jwt");
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       setSelectedImage(URL.createObjectURL(file));
+      setImageFile(file);
+    }
+  };
+
+  const docRef = useMemo(() => doc(db, "USERS", jwt), [jwt]);
+
+  const handleSubmit = async () => {
+    try {
+      let imageUrl = null;
+      if (imageFile) {
+        const storageRef = ref(storage, `fundraises/${imageFile.name}`);
+        await uploadBytes(storageRef, imageFile);
+        imageUrl = await getDownloadURL(storageRef);
+      }
+      const fundraiseData = {
+        title,
+        story,
+        imageUrl,
+        createdAt: new Date(),
+      };
+      const docSnapshot = await getDoc(docRef);
+      if (docSnapshot.exists()) {
+        await updateDoc(docRef, {
+          fundraises: [...(docSnapshot.data().fundraises || []), fundraiseData],
+        });
+      } else {
+        await setDoc(docRef, { fundraises: [fundraiseData] });
+      }
+      settoggle(false);
+    } catch (error) {
+      console.error("Error creating fundraise:", error);
     }
   };
 
@@ -24,21 +63,6 @@ export default function FundRaiseModel({ settoggle }) {
           />
         </div>
         <input
-          type="text"
-          className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
-          placeholder="Tittle"
-        />
-        <input
-          type="text"
-          className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
-          placeholder="Story"
-        />
-        <input
           type="file"
           accept="image/*"
           className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
@@ -53,6 +77,26 @@ export default function FundRaiseModel({ settoggle }) {
             />
           </div>
         )}
+        <input
+          type="text"
+          className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
+          placeholder="Story"
+          value={story}
+          onChange={(e) => setStory(e.target.value)}
+        />
+        <button
+          onClick={handleSubmit}
+          className="py-2.5 font-semibold text-white bg-green-500"
+        >
+          Save
+        </button>
       </div>
     </div>
   );
