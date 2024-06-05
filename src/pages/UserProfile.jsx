@@ -34,7 +34,7 @@ export default function UserProfile() {
           </button>
         </div>
       </div>
-      {toggle && <FundRaiseModel />}
+      {toggle && <FundRaiseModel settoggle={settoggle} />}
       <Footer />
     </>
   );

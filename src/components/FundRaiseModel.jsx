@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 
-export default function FundRaiseModel() {
+export default function FundRaiseModel({ settoggle }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageUpload = (event) => {
@@ -15,7 +15,13 @@ export default function FundRaiseModel() {
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full bg-black bg-opacity-60 backdrop-blur-sm">
       <div className="p-8 bg-white w-[85vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] flex flex-col justify-center ">
         <div className="flex justify-end mb-4">
-          <RxCross2 size={25} cursor={"pointer"} />
+          <RxCross2
+            onClick={() => {
+              settoggle(false);
+            }}
+            size={25}
+            cursor={"pointer"}
+          />
         </div>
         <input
           type="text"
