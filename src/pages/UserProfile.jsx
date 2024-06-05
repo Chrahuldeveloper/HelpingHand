@@ -1,7 +1,10 @@
 import React from "react";
 import { Footer, FundRaiseModel } from "../components";
+import { useState } from "react";
 
 export default function UserProfile() {
+  const [toggle, settoggle] = useState(false);
+
   return (
     <>
       <div className="flex flex-col items-center justify-center my-16">
@@ -21,13 +24,18 @@ export default function UserProfile() {
           <button className="border-[1px] px-10 py-2.5 font-semibold text-sm hover:bg-green-500 hover:text-white ease-in-out duration-500">
             Edit Profile
           </button>
-          <button className="border-[1px] px-10 py-2.5 font-semibold text-sm hover:bg-green-500 hover:text-white ease-in-out duration-500">
+          <button
+            onClick={() => {
+              settoggle(true);
+            }}
+            className="border-[1px] px-10 py-2.5 font-semibold text-sm hover:bg-green-500 hover:text-white ease-in-out duration-500"
+          >
             FundRaise
           </button>
         </div>
       </div>
-      <FundRaiseModel/>
-      <Footer/>
+      {toggle && <FundRaiseModel />}
+      <Footer />
     </>
   );
 }

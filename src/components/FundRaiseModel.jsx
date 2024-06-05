@@ -25,12 +25,12 @@ export default function FundRaiseModel() {
         <input
           type="text"
           className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
-          placeholder="Name"
+          placeholder="Tittle"
         />
         <input
           type="text"
           className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
-          placeholder="Name"
+          placeholder="Story"
         />
         <input
           type="file"
