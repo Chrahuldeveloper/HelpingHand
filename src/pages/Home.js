@@ -31,6 +31,21 @@ export default function Home() {
   return (
     <>
       <Navbar />
+
+      <div className="profile-page">
+        <div className="absolute left-10 md:left-28 top-44 md:top-64">
+          <div className="space-y-3 text-white md:max-w-2xl">
+            <h1 className="text-3xl font-bold md:text-5xl">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h1>
+            <p className="max-w-xs leading-7 md:text-lg">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa,
+              minima?
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="px-8 mt-4 md:px-32">
         <h1 className="text-lg font-semibold md:text-2xl">Featured Donates</h1>
       </div>

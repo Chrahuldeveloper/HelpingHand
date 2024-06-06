@@ -13,20 +13,20 @@ export default function Footer() {
         <div className="flex gap-x-20">
           <div>
             <ul className="space-y-3">
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">About</li>
-              <li className="cursor-pointer">Contact</li>
-              <li className="cursor-pointer">Email</li>
-              <li className="cursor-pointer">Services</li>
+              <li className="font-semibold cursor-pointer">Home</li>
+              <li className="font-semibold cursor-pointer">About</li>
+              <li className="font-semibold cursor-pointer">Contact</li>
+              <li className="font-semibold cursor-pointer">Email</li>
+              <li className="font-semibold cursor-pointer">Services</li>
             </ul>
           </div>
           <div>
             <ul className="space-y-3">
-              <li className="cursor-pointer">Linkdin</li>
-              <li className="cursor-pointer">Instgram</li>
-              <li className="cursor-pointer">Facebook</li>
-              <li className="cursor-pointer">Youtube</li>
-              <li className="cursor-pointer">Twitter</li>
+              <li className="font-semibold cursor-pointer">Linkdin</li>
+              <li className="font-semibold cursor-pointer">Instgram</li>
+              <li className="font-semibold cursor-pointer">Facebook</li>
+              <li className="font-semibold cursor-pointer">Youtube</li>
+              <li className="font-semibold cursor-pointer">Twitter</li>
             </ul>
           </div>
         </div>

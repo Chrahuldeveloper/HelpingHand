@@ -56,8 +56,12 @@ export default function FundedCards() {
                 className="duration-500 ease-in-out rounded-md cursor-pointer hover:brightness-75"
                 alt={fundraise.title}
               />
-              <h1 className="text-lg font-semibold ">{fundraise.title}</h1>
-              <p className="text-sm text-gray-600 w-36">{fundraise.story}</p>
+              <h1 className="text-lg font-semibold underline">
+                {fundraise.title}
+              </h1>
+              <p className="text-sm text-gray-600 underline ">
+                {fundraise.story}
+              </p>
               <div className="flex justify-end">
                 <Link
                   to={"/FullDonation"}
