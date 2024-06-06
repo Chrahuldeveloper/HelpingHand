@@ -55,9 +55,13 @@ export default function Home() {
           );
         })}
       </div>
-
+      <div className="flex items-center justify-center my-5">
+        <button className="border-[1px] px-20 py-1.5 rounded-lg font-semibold hover:bg-green-500 ease-in-out duration-500 hover:text-white border-slate-300">
+          View All
+        </button>
+      </div>
       <div className="bg-[#f0fce9] px-8 mt-5 py-24 md:rounded-full md:mx-4">
-        <div className="space-y-5 md:pl-28">
+        <div className="space-y-5 md:pl-28">nd
           <h1 className="text-xl font-semibold md:text-3xl md:max-w-md ">
             Fundraising on GoFundMe is easy, powerful, and trusted.
           </h1>

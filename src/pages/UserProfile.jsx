@@ -8,7 +8,7 @@ export default function UserProfile() {
   return (
     <>
       <div className="p-8 border-b-[1px] border-gray-300 shadow-sm">
-        <h1>HelpingHand</h1>
+        <h1 className="text-lg font-semibold text-green-700">HelpingHand</h1>
       </div>
 
       <div className="flex flex-col items-center justify-center my-10">
