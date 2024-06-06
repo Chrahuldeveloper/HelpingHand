@@ -5,9 +5,8 @@ export default function Footer() {
     <>
       <div className="border-t-[1px] border-gray-300 p-6 flex md:flex-row flex-col justify-around px-20 items-center gap-8">
         <div>
-          <h1 className="max-w-md mx-auto font-semibold text-center md:text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Exercitationem, vitae?
+          <h1 className="max-w-md mx-auto text-xl font-semibold text-center md:text-3xl">
+            Every Donation Counts Toward Change{" "}
           </h1>
         </div>
         <div className="flex gap-x-20">

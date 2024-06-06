@@ -17,7 +17,7 @@ export default function Start() {
         </div>
         <div className=" p-5 md:translate-x-28 md:bg-white md:rounded-md z-50 border-[1px] border-gray-100">
           <h1 className="text-2xl font-bold leading-8 md:text-4xl md:max-w-md">
-            Start fundraising on GoFundMe
+            Start fundraising on HelpingHand
           </h1>
           <p className="max-w-md mt-4 text-xl leading-9">
             Everything you need to help your fundraiser succeed is here. Start

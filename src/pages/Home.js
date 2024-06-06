@@ -40,8 +40,8 @@ export default function Home() {
               Future{" "}
             </h1>
             <p className="max-w-xs leading-7 md:max-w-sm md:text-lg">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa,
-              minima?
+              Every Donation Counts Toward Change,Every Donation Counts Toward
+              Change
             </p>
           </div>
         </div>
@@ -63,7 +63,9 @@ export default function Home() {
             <h1 className="text-lg font-semibold underline">
               {fundraise.title}
             </h1>
-            <p className="text-sm text-gray-600 underline">{fundraise.story.slice(0, 50)}...</p>
+            <p className="text-sm text-gray-600 underline">
+              {fundraise.story.slice(0, 50)}...
+            </p>
             <div className="flex justify-end">
               <Link
                 to={"/FullDonation"}
@@ -73,7 +75,7 @@ export default function Home() {
                   story: fundraise.story,
                 }}
               >
-                <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold">
+                <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold mt-4">
                   Donate
                 </button>
               </Link>
@@ -82,14 +84,16 @@ export default function Home() {
         ))}
       </div>
       <div className="flex items-center justify-center my-5">
-        <button className="border-[1px] px-20 py-1.5 rounded-lg font-semibold hover:bg-green-500 ease-in-out duration-500 hover:text-white border-slate-300">
-          View All
-        </button>
+        <Link to={"/Donate"}>
+          <button className="border-[1px] px-20 py-1.5 rounded-lg font-semibold hover:bg-green-500 ease-in-out duration-500 hover:text-white border-slate-300">
+            View All
+          </button>
+        </Link>
       </div>
       <div className="bg-[#f0fce9] px-8 mt-5 py-24 md:rounded-full md:mx-4">
         <div className="space-y-5 md:pl-28">
           <h1 className="text-xl font-semibold md:text-3xl md:max-w-md ">
-            Fundraising on GoFundMe is easy, powerful, and trusted.
+            Fundraising on HelpingHand is easy, powerful, and trusted.
           </h1>
           <p className="leading-8 md:max-w-xl md:text-lg">
             Get what you need to help your fundraiser succeed on GoFundMe,
@@ -107,7 +111,7 @@ export default function Home() {
             We've got you covered.
           </h1>
           <p className="leading-8 md:max-w-xl md:text-lg">
-            GoFundMe is a trusted leader in online fundraising. With simple
+          HelpingHand is a trusted leader in online fundraising. With simple
             pricing and a team of Trust & Safety experts in your corner, you can
             raise money or make a donation with peace of mind.
           </p>

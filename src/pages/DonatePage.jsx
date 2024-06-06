@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Firebase";
 import { Footer, Loader } from "../components";
 import { Link } from "react-router-dom";
+
 export default function DonatePage() {
   const [featuredCards, setFeaturedCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +17,6 @@ export default function DonatePage() {
         (doc) => doc.data().fundraises || []
       );
       setFeaturedCards(allFundraises);
-      console.log(allFundraises);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -30,7 +30,7 @@ export default function DonatePage() {
 
   return (
     <>
-      {isLoading ? <Loader /> : null}
+      {isLoading && <Loader />}
       <div className="p-8 border-b-[1px] border-gray-300 shadow-sm">
         <h1 className="text-lg font-semibold text-green-700">HelpingHand</h1>
       </div>
@@ -42,15 +42,24 @@ export default function DonatePage() {
           >
             <img
               src={fundraise.imageUrl}
-              className="w-full max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
-              alt={"pic"}
+              className="object-cover w-full h-48 rounded-lg cursor-pointer hover:brightness-75"
+              alt={"Fundraise"}
             />
-            <h1 className="text-lg font-semibold underline">
-              {fundraise.title}
-            </h1>
-            <p className="text-sm text-gray-600 underline">{fundraise.story}</p>
+            <h1 className="mt-2 text-lg font-semibold">{fundraise.title}</h1>
+            <p className="mb-2 text-sm text-gray-600">
+              {fundraise.story.length > 100
+                ? `${fundraise.story.substring(0, 100)}...`
+                : fundraise.story}
+            </p>
             <div className="flex justify-end">
-              <Link>
+              <Link
+                to={"/FullDonation"}
+                state={{
+                  img: fundraise.imageUrl,
+                  title: fundraise.title,
+                  story: fundraise.story,
+                }}
+              >
                 <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold">
                   Donate
                 </button>

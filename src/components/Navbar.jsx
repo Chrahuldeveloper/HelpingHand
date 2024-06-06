@@ -63,7 +63,7 @@ export default function Navbar() {
                 className="cursor-pointer"
               />
             </div>
-            <ul className="space-y-5">
+            <ul className="">
               {jwt ? (
                 <Link to={"/profile"}>
                   <li className="p-3 space-y-2 rounded-lg cursor-pointer bg-gray-50">
@@ -75,7 +75,7 @@ export default function Navbar() {
                 </Link>
               ) : (
                 <Link to={"/Signin"}>
-                  <li className="p-3 space-y-2 rounded-lg cursor-pointer bg-gray-50">
+                  <li className="p-3 mt-5 space-y-2 rounded-lg cursor-pointer bg-gray-50">
                     <h1 className="text-lg ">SignUp</h1>
                     <p className="text-xs">
                       Lorem ipsum dolor sit amet consectetur adipisicing.
@@ -84,7 +84,7 @@ export default function Navbar() {
                 </Link>
               )}
               <Link to="/Donate">
-                <li className="p-3 mt-5 space-y-2 rounded-lg cursor-pointer bg-gray-50">
+                <li className="p-3 mt-5 space-y-2 cursor-pointer roun ded-lg bg-gray-50">
                   <h1 className="text-lg ">Donate</h1>
                   <p className="text-xs">
                     Lorem ipsum dolor sit amet consectetur adipisicing.
@@ -92,7 +92,7 @@ export default function Navbar() {
                 </li>
               </Link>
               <Link to="/start">
-                <li className="p-3 space-y-2 rounded-lg cursor-pointer bg-gray-50">
+                <li className="p-3 mt-5 space-y-2 rounded-lg cursor-pointer bg-gray-50">
                   <h1 className="text-lg ">FundRaise</h1>
                   <p className="text-xs">
                     Lorem ipsum dolor sit amet consectetur adipisicing.
