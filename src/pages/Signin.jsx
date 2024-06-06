@@ -176,7 +176,7 @@ export default function Signin() {
             <p className="text-center">Profile Picture Preview:</p>
             <img
               src={data.profilePic}
-              alt="Profile Picture Preview"
+              alt="Preview"
               className="object-cover mx-auto mt-2 rounded-full w-28 h-28"
             />
           </div>
@@ -184,7 +184,7 @@ export default function Signin() {
         {data.qr && (
           <div className="mt-4">
             <p className="text-center">QR Code Preview:</p>
-            <img src={data.qr} alt="QR Code Preview" className="mx-auto mt-2" />
+            <img src={data.qr} alt="Preview" className="mx-auto mt-2" />
           </div>
         )}
         <p className="mt-3 font-semibold text-center text-slate-500">OR</p>

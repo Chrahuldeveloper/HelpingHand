@@ -43,7 +43,7 @@ export default function DonatePage() {
             <img
               src={fundraise.imageUrl}
               className="w-full max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
-              alt={fundraise.title}
+              alt={"pic"}
             />
             <h1 className="text-lg font-semibold underline">
               {fundraise.title}

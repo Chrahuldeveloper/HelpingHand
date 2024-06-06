@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Footer, Navbar } from "../components/index";
+import { Footer, Loader, Navbar } from "../components/index";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Firebase";
 import { Link } from "react-router-dom";
@@ -29,6 +29,7 @@ export default function Home() {
 
   return (
     <>
+      {isLoading ? <Loader /> : null}
       <Navbar />
       <div className="profile-page">
         <div className="absolute left-10 md:left-28 top-44 md:top-64">
@@ -37,7 +38,7 @@ export default function Home() {
               Make an Impact with Every Donation.Join Us in Creating a Brighter
               Future{" "}
             </h1>
-            <p className="max-w-xs leading-7 md:text-lg">
+            <p className="max-w-xs leading-7 md:max-w-sm md:text-lg">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa,
               minima?
             </p>
@@ -63,7 +64,14 @@ export default function Home() {
             </h1>
             <p className="text-sm text-gray-600 underline">{fundraise.story}</p>
             <div className="flex justify-end">
-              <Link>
+              <Link
+                to={"/FullDonation"}
+                state={{
+                  img: fundraise.imageUrl,
+                  title: fundraise.title,
+                  story: fundraise.story,
+                }}
+              >
                 <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold">
                   Donate
                 </button>
