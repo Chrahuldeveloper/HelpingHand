@@ -1,42 +1,41 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Footer, Navbar } from "../components/index";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../Firebase";
+import { Link } from "react-router-dom";
 export default function Home() {
-  const featuredCards = [
-    {
-      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
-      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
-    },
-    {
-      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
-      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
-    },
-    {
-      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
-      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
-    },
-    {
-      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
-      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
-    },
-    {
-      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
-      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
-    },
-    {
-      img: "https://images.gofundme.com/SX4Z992dam4DCcsr_OAXH0vlnBg=/720x405/https://d2g8igdw686xgo.cloudfront.net/79580661_1713405437532707_r.jpeg",
-      Tittle: "Lorem, ipsum dolor.Lorem, ipsum dolor",
-    },
-  ];
+  const [featuredCards, setFeaturedCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchData = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const userCollectionRef = collection(db, "USERS");
+      const snapshot = await getDocs(userCollectionRef);
+      const allFundraises = snapshot.docs.flatMap(
+        (doc) => doc.data().fundraises || []
+      );
+      setFeaturedCards(allFundraises);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <>
       <Navbar />
-
       <div className="profile-page">
         <div className="absolute left-10 md:left-28 top-44 md:top-64">
           <div className="space-y-3 text-white md:max-w-2xl">
             <h1 className="text-3xl font-bold md:text-5xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Make an Impact with Every Donation.Join Us in Creating a Brighter
+              Future{" "}
             </h1>
             <p className="max-w-xs leading-7 md:text-lg">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa,
@@ -45,30 +44,33 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <div className="px-8 mt-4 md:px-32">
+      <div className="px-8 my-10 md:px-32">
         <h1 className="text-lg font-semibold md:text-2xl">Featured Donates</h1>
       </div>
-      <div className="flex flex-col items-center justify-center grid-cols-3 mt-2 md:flex-row md:grid place-items-center md:px-12">
-        {featuredCards.map((_, i) => {
-          return (
-            <React.Fragment key={i}>
-              <div className="p-5 space-y-2.5">
-                <img
-                  src={_.img}
-                  className="max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer md:max-w-md hover:brightness-75"
-                  alt=""
-                />
-                <h1 className="text-lg font-semibold underline">{_.Tittle}</h1>
-                <div className="flex justify-end ">
-                  <button className="border-green-400 border-[1px] px-8 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold">
-                    Donate
-                  </button>
-                </div>
-              </div>
-            </React.Fragment>
-          );
-        })}
+      <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
+        {featuredCards?.map((fundraise, i) => (
+          <div
+            key={i}
+            className="p-5 space-y-2 bg-white rounded-lg shadow-sm border-[1px] border-gray-200"
+          >
+            <img
+              src={fundraise.imageUrl}
+              className="w-full max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
+              alt={fundraise.title}
+            />
+            <h1 className="text-lg font-semibold underline">
+              {fundraise.title}
+            </h1>
+            <p className="text-sm text-gray-600 underline">{fundraise.story}</p>
+            <div className="flex justify-end">
+              <Link>
+                <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold">
+                  Donate
+                </button>
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
       <div className="flex items-center justify-center my-5">
         <button className="border-[1px] px-20 py-1.5 rounded-lg font-semibold hover:bg-green-500 ease-in-out duration-500 hover:text-white border-slate-300">
@@ -77,7 +79,6 @@ export default function Home() {
       </div>
       <div className="bg-[#f0fce9] px-8 mt-5 py-24 md:rounded-full md:mx-4">
         <div className="space-y-5 md:pl-28">
-          nd
           <h1 className="text-xl font-semibold md:text-3xl md:max-w-md ">
             Fundraising on GoFundMe is easy, powerful, and trusted.
           </h1>
@@ -91,7 +92,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-
       <div className="bg-[#012d19] px-8 my-8 py-24 md:rounded-full md:mx-4">
         <div className="space-y-5 text-white md:pl-28">
           <h1 className="text-xl font-semibold md:text-3xl md:max-w-md ">
@@ -104,7 +104,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-
       <Footer />
     </>
   );

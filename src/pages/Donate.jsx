@@ -1,11 +1,34 @@
-import React, { useState } from "react";
-import { DonateModel, Navbar } from "../components";
+import React, { useState, useEffect } from "react";
+import { DonateModel, Footer, Navbar, Loader } from "../components";
 import { useLocation } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../Firebase";
 
 export default function Donate() {
   const [istoggle, setistoggle] = useState(false);
-
+  const [qrCode, setQrCode] = useState(null);
+  const [loading, setLoading] = useState(true);
   const data = useLocation();
+
+  useEffect(() => {
+    const fetchUserQRCode = async () => {
+      try {
+        const jwt = localStorage.getItem("jwt");
+        const docRef = doc(db, "USERS", jwt);
+        const docSnapshot = await getDoc(docRef);
+        if (docSnapshot.exists()) {
+          const userData = docSnapshot.data();
+          setQrCode(userData.qr || null);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchUserQRCode();
+  }, []);
 
   return (
     <>
@@ -23,9 +46,6 @@ export default function Donate() {
         </div>
       </div>
       <div className="flex flex-col justify-center gap-3 mx-3 mt-5 md:max-w-xl md:mx-auto">
-        <button className="py-3 font-semibold rounded-full bg-gradient-to-r from-amber-500 via-yellow-500 to-yellow-500 md:hidden">
-          Share
-        </button>
         <button
           onClick={() => {
             setistoggle(true);
@@ -36,33 +56,24 @@ export default function Donate() {
         </button>
         <div className="my-1 mb-5">
           <p className="px-3">{data.state.story}</p>
-          <div className="flex items-center justify-center gap-4 mt-3 ">
-            <button
-              onClick={() => {
-                setistoggle(true);
-              }}
-              className="border-[1px] px-20 py-2 rounded-xl border-gray-500 md:hidden"
-            >
-              Donate
-            </button>
-            <button className="border-[1px] px-20 py-2 rounded-xl border-gray-500 md:hidden">
-              Share
-            </button>
-            <button className="hidden px-24 py-3 font-semibold rounded-full bg-gradient-to-r from-amber-500 via-yellow-500 to-yellow-500 md:block">
-              Share
-            </button>
-            <button
-              onClick={() => {
-                setistoggle(true);
-              }}
-              className="hidden px-24 py-3 font-semibold rounded-full bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 md:block"
-            >
-              Donate Now
-            </button>
-          </div>
+          {loading ? (
+            <Loader />
+          ) : (
+            <div className="flex items-center justify-center gap-4 mt-3 ">
+              <button
+                onClick={() => {
+                  setistoggle(true);
+                }}
+                className="hidden px-24 py-3 font-semibold rounded-full bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 md:block"
+              >
+                Donate Now
+              </button>
+            </div>
+          )}
         </div>
       </div>
-      {istoggle && <DonateModel setistoggle={setistoggle} />}
+      <Footer />
+      {istoggle && <DonateModel setistoggle={setistoggle} qrCode={qrCode} />}
     </>
   );
 }
