@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { DonateModel, Navbar } from "../components";
+import { useLocation } from "react-router-dom";
 
 export default function Donate() {
   const [istoggle, setistoggle] = useState(false);
+
+  const { img, title, story } = useLocation();
 
   return (
     <>
       <Navbar />
       <div className="flex flex-col gap-3 mx-auto md:max-w-xl">
-        <h1 className="order-2 px-6 text-lg font-semibold">
-          Help us evacuate Gaza to survive from the war!
-        </h1>
+        <h1 className="order-2 px-6 text-lg font-semibold">{title}</h1>
         <div>
           <img
-            src="https://images.gofundme.com/7WqslE_-wlFfWtAilcmQY_GKsVo=/720x405/https://d2g8igdw686xgo.cloudfront.net/79366043_1716193614118786_r.jpeg"
+            src={img}
             alt=""
             className="max-w-md mx-auto mt-5 duration-500 ease-in-out rounded-lg md:max-w-xl hover:brightness-75"
           />
@@ -32,18 +33,7 @@ export default function Donate() {
           Donate Now
         </button>
         <div className="my-1 mb-5">
-          <p className="px-3">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. At quod
-            minus quidem nobis velit laboriosam tempore magni deserunt quam,
-            atque natus consectetur, dignissimos doloremque temporibus incidunt
-            excepturi delectus officiis possimus? Quia quaerat in nam quisquam,
-            quae qui incidunt fugit placeat ipsum nobis cum iusto. Eaque, porro.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. At quod
-            minus quidem nobis velit laboriosam tempore magni deserunt quam,
-            atque natus consectetur, dignissimos doloremque temporibus incidunt
-            excepturi delectus officiis possimus? Quia quaerat in nam quisquam,
-            quae qui incidunt fugit placeat ipsum nobis cum iusto. Eaque, porro.
-          </p>
+          <p className="px-3">{story}</p>
           <div className="flex items-center justify-center gap-4 mt-3 ">
             <button
               onClick={() => {

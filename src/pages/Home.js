@@ -61,7 +61,8 @@ export default function Home() {
         </button>
       </div>
       <div className="bg-[#f0fce9] px-8 mt-5 py-24 md:rounded-full md:mx-4">
-        <div className="space-y-5 md:pl-28">nd
+        <div className="space-y-5 md:pl-28">
+          nd
           <h1 className="text-xl font-semibold md:text-3xl md:max-w-md ">
             Fundraising on GoFundMe is easy, powerful, and trusted.
           </h1>

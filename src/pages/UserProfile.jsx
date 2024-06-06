@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Footer, FundRaiseModel, FundedCards } from "../components";
-import { useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../Firebase";
 
 export default function UserProfile() {
   const [toggle, settoggle] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const jwt = localStorage.getItem("jwt");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        if (!jwt) throw new Error("No JWT found");
+        const docRef = doc(db, "USERS", jwt);
+        const docSnapshot = await getDoc(docRef);
+        if (docSnapshot.exists()) {
+          const data = docSnapshot.data();
+          console.log("User Data: ", data);
+          setUserData(data);
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching user data: ", error);
+      }
+    };
+
+    fetchUserData();
+  }, [jwt]);
 
   return (
     <>
@@ -13,16 +37,13 @@ export default function UserProfile() {
 
       <div className="flex flex-col items-center justify-center my-10">
         <img
-          src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=300"
+          src={userData?.profilePic}
           className="object-cover w-48 h-48 duration-500 ease-in-out rounded-full cursor-pointer hover:brightness-75"
-          alt=""
+          alt="pic"
         />
         <div className="max-w-xs mt-2 space-y-2 text-center">
-          <h1 className="text-lg font-bold">Rahul</h1>
-          <p className="max-w-md text-sm">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur
-            sint deserunt numquam!
-          </p>
+          <h1 className="text-lg font-bold">{userData?.Name}</h1>
+          <p className="max-w-md text-sm">{userData?.story}</p>
         </div>
         <div className="mt-5 space-x-5">
           <button

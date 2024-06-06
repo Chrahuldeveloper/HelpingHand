@@ -3,10 +3,13 @@ import { db, storage } from "../Firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Loader } from "../components";
+import { useNavigate } from "react-router-dom";
 
 export default function Signin() {
   const qrref = useRef(null);
+  const profileref = useRef(null);
   const userjwt = useId();
+  const navigate = useNavigate()
 
   const [data, setData] = useState({
     Name: "",
@@ -17,11 +20,12 @@ export default function Signin() {
     Ngo: "",
     story: "",
     qr: "",
+    profilePic: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const getUserlocatiom = async () => {
+  const getUserLocation = async () => {
     try {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (location, err) => {
@@ -43,7 +47,9 @@ export default function Signin() {
     try {
       setIsLoading(true);
       await setDoc(doc(db, "USERS", userjwt), data);
+      localStorage.setItem("jwt", userjwt);
       setIsLoading(false);
+      navigate("/profile")
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -67,18 +73,35 @@ export default function Signin() {
     }
   };
 
+  const handleProfilePicUpload = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const storageRef = ref(storage, `profile-pics/${userjwt}-${file.name}`);
+      try {
+        setIsLoading(true);
+        await uploadBytes(storageRef, file);
+        const downloadURL = await getDownloadURL(storageRef);
+        setData({ ...data, profilePic: downloadURL });
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
+    }
+  };
+
   return (
     <>
       {isLoading && <Loader />}
       <div className="px-8 mx-auto py-7 md:max-w-md">
-        <p className="text-sm ">Welcome to HelpingHand!</p>
+        <p className="text-sm">Welcome to HelpingHand!</p>
         <div className="my-3.5">
           <h1 className="text-xl font-semibold">Create an account or Login</h1>
         </div>
         <div className="flex flex-col gap-4">
           <input
             type="text"
-            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl "
+            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl"
             placeholder="Name"
             value={data.Name}
             onChange={(e) => setData({ ...data, Name: e.target.value })}
@@ -92,37 +115,50 @@ export default function Signin() {
           />
           <input
             type="text"
-            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl "
+            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl"
             placeholder="Phone Number"
             value={data.Phone}
             onChange={(e) => setData({ ...data, Phone: e.target.value })}
           />
           <input
             type="password"
-            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl "
+            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl"
             placeholder="Password"
             value={data.Password}
             onChange={(e) => setData({ ...data, Password: e.target.value })}
           />
           <input
             type="text"
-            onClick={getUserlocatiom}
-            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl "
+            onClick={getUserLocation}
+            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl"
             placeholder="Location"
             value={data.Location}
             onChange={(e) => setData({ ...data, Location: e.target.value })}
           />
           <input
             type="text"
-            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl "
+            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl"
             placeholder="Ngo Name"
             value={data.Ngo}
             onChange={(e) => setData({ ...data, Ngo: e.target.value })}
           />
-         
           <input
             type="text"
-            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl "
+            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl"
+            placeholder="Upload Profile Picture"
+            onClick={() => profileref.current.click()}
+            value={data.profilePic ? "Profile Picture Uploaded" : ""}
+            readOnly
+          />
+          <input
+            type="file"
+            className="hidden"
+            ref={profileref}
+            onChange={handleProfilePicUpload}
+          />
+          <input
+            type="text"
+            className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl"
             placeholder="Upload QRCODE"
             onClick={() => qrref.current.click()}
             value={data.qr ? "QR Code Uploaded" : ""}
@@ -135,6 +171,16 @@ export default function Signin() {
             onChange={handleQRUpload}
           />
         </div>
+        {data.profilePic && (
+          <div className="mt-4">
+            <p className="text-center">Profile Picture Preview:</p>
+            <img
+              src={data.profilePic}
+              alt="Profile Picture Preview"
+              className="object-cover mx-auto mt-2 rounded-full w-28 h-28"
+            />
+          </div>
+        )}
         {data.qr && (
           <div className="mt-4">
             <p className="text-center">QR Code Preview:</p>
