@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Firebase";
-import { Loader } from "../components";
+import { Footer, Loader } from "../components";
 import { Link } from "react-router-dom";
 export default function DonatePage() {
   const [featuredCards, setFeaturedCards] = useState([]);
@@ -31,19 +31,27 @@ export default function DonatePage() {
   return (
     <>
       {isLoading ? <Loader /> : null}
-      <div className="grid justify-center grid-cols-1 gap-6 px-5 mt-6 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
+      <div className="p-8 border-b-[1px] border-gray-300 shadow-sm">
+        <h1 className="text-lg font-semibold text-green-700">HelpingHand</h1>
+      </div>
+      <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
         {featuredCards?.map((fundraise, i) => (
-          <div key={i} className="p-5 space-y-2 bg-white rounded-lg shadow-md">
+          <div
+            key={i}
+            className="p-5 space-y-2 bg-white rounded-lg shadow-sm border-[1px] border-gray-200"
+          >
             <img
               src={fundraise.imageUrl}
               className="w-full max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
               alt={fundraise.title}
             />
-            <h1 className="text-lg font-semibold">{fundraise.title}</h1>
-            <p className="text-sm text-gray-600">{fundraise.story}</p>
+            <h1 className="text-lg font-semibold underline">
+              {fundraise.title}
+            </h1>
+            <p className="text-sm text-gray-600 underline">{fundraise.story}</p>
             <div className="flex justify-end">
               <Link>
-                <button className="border-green-400 border-[1px] px-8 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold">
+                <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold">
                   Donate
                 </button>
               </Link>
@@ -51,6 +59,7 @@ export default function DonatePage() {
           </div>
         ))}
       </div>
+      <Footer />
     </>
   );
 }

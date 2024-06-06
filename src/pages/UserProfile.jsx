@@ -43,7 +43,7 @@ export default function UserProfile() {
         />
         <div className="max-w-xs mt-2 space-y-2 text-center">
           <h1 className="text-lg font-bold">{userData?.Name}</h1>
-          <p className="max-w-md text-sm">{userData?.story}</p>
+          <p className="text-sm">{userData?.story}</p>
         </div>
         <div className="mt-5 space-x-5">
           <button

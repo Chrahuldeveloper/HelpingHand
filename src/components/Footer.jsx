@@ -14,21 +14,19 @@ export default function Footer() {
           <div>
             <ul className="space-y-3">
               <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
+              <li className="cursor-pointer">About</li>
+              <li className="cursor-pointer">Contact</li>
+              <li className="cursor-pointer">Email</li>
+              <li className="cursor-pointer">Services</li>
             </ul>
           </div>
           <div>
             <ul className="space-y-3">
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
-              <li className="cursor-pointer">Home</li>
+              <li className="cursor-pointer">Linkdin</li>
+              <li className="cursor-pointer">Instgram</li>
+              <li className="cursor-pointer">Facebook</li>
+              <li className="cursor-pointer">Youtube</li>
+              <li className="cursor-pointer">Twitter</li>
             </ul>
           </div>
         </div>

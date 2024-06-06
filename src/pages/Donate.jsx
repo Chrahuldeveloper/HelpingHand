@@ -5,16 +5,18 @@ import { useLocation } from "react-router-dom";
 export default function Donate() {
   const [istoggle, setistoggle] = useState(false);
 
-  const { img, title, story } = useLocation();
+  const data = useLocation();
 
   return (
     <>
       <Navbar />
       <div className="flex flex-col gap-3 mx-auto md:max-w-xl">
-        <h1 className="order-2 px-6 text-lg font-semibold">{title}</h1>
+        <h1 className="order-2 px-6 text-lg font-semibold">
+          {data.state.title}
+        </h1>
         <div>
           <img
-            src={img}
+            src={data.state.img}
             alt=""
             className="max-w-md mx-auto mt-5 duration-500 ease-in-out rounded-lg md:max-w-xl hover:brightness-75"
           />
@@ -33,7 +35,7 @@ export default function Donate() {
           Donate Now
         </button>
         <div className="my-1 mb-5">
-          <p className="px-3">{story}</p>
+          <p className="px-3">{data.state.story}</p>
           <div className="flex items-center justify-center gap-4 mt-3 ">
             <button
               onClick={() => {
