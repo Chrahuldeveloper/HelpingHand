@@ -1,13 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Footer, Loader, Navbar } from "../components/index";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Firebase";
 import { Link } from "react-router-dom";
+
 export default function Home() {
   const [featuredCards, setFeaturedCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     try {
       setIsLoading(true);
       const userCollectionRef = collection(db, "USERS");
@@ -21,11 +22,11 @@ export default function Home() {
       console.error("Error fetching data: ", error);
       setIsLoading(false);
     }
-  }, []);
+  };
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   return (
     <>
@@ -35,7 +36,7 @@ export default function Home() {
         <div className="absolute left-10 md:left-28 top-44 md:top-64">
           <div className="space-y-3 text-white md:max-w-2xl">
             <h1 className="text-3xl font-bold md:text-5xl">
-              Make an Impact with Every Donation.Join Us in Creating a Brighter
+              Make an Impact with Every Donation. Join Us in Creating a Brighter
               Future{" "}
             </h1>
             <p className="max-w-xs leading-7 md:max-w-sm md:text-lg">
@@ -62,7 +63,7 @@ export default function Home() {
             <h1 className="text-lg font-semibold underline">
               {fundraise.title}
             </h1>
-            <p className="text-sm text-gray-600 underline">{fundraise.story}</p>
+            <p className="text-sm text-gray-600 underline">{fundraise.story.slice(0, 50)}...</p>
             <div className="flex justify-end">
               <Link
                 to={"/FullDonation"}

@@ -46,6 +46,9 @@ export default function Donate() {
         </div>
       </div>
       <div className="flex flex-col justify-center gap-3 mx-3 mt-5 md:max-w-xl md:mx-auto">
+        <div className="my-1 mb-8">
+          <p className="px-3">{data.state.story}</p>
+        </div>
         <button
           onClick={() => {
             setistoggle(true);
@@ -54,24 +57,21 @@ export default function Donate() {
         >
           Donate Now
         </button>
-        <div className="my-1 mb-5">
-          <p className="px-3">{data.state.story}</p>
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="flex items-center justify-center gap-4 mt-3 ">
-              <button
-                onClick={() => {
-                  setistoggle(true);
-                }}
-                className="hidden px-24 py-3 font-semibold rounded-full bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 md:block"
-              >
-                Donate Now
-              </button>
-            </div>
-          )}
-        </div>
       </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="flex items-center justify-center gap-4 my-6 ">
+          <button
+            onClick={() => {
+              setistoggle(true);
+            }}
+            className="hidden px-48 py-3 font-semibold rounded-full bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 md:block"
+          >
+            Donate Now
+          </button>
+        </div>
+      )}
       <Footer />
       {istoggle && <DonateModel setistoggle={setistoggle} qrCode={qrCode} />}
     </>

@@ -21,7 +21,6 @@ export default function FundedCards() {
 
         if (docSnapshot.exists()) {
           const userData = docSnapshot.data();
-          console.log(userData);
           setFundraises(userData.fundraises || []);
         } else {
           console.log("No such document!");
@@ -33,34 +32,35 @@ export default function FundedCards() {
         setIsLoading(false);
       }
     };
+
     fetchUserFundraises();
   }, []);
 
   return (
     <>
-      {isLoading ? <Loader /> : null}
+      {isLoading && <Loader />}
       {fundraises.length === 0 ? (
         <div className="flex flex-col items-center justify-center my-10 space-y-2">
           <GiNothingToSay size={120} color="gray" />
-          <h1 className="text-sm text-slate-500">You have nothing:(</h1>
+          <h1 className="text-sm text-slate-500">
+            You have no fundraises yet.
+          </h1>
         </div>
       ) : (
-        <div className="grid justify-center grid-cols-1 gap-6 px-5 my-6 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
+        <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
           {fundraises.map((fundraise, i) => (
             <div
               key={i}
-              className="max-w-md p-5 space-y-2 bg-white rounded-lg shadow-sm border-[1px] border-slate-200"
+              className="w-[80vw] md:w-[26vw] p-5 space-y-2 bg-white rounded-lg shadow-xs border-[1px] border-slate-200"
             >
               <img
                 src={fundraise.imageUrl}
-                className="duration-500 ease-in-out rounded-md cursor-pointer hover:brightness-75"
+                className="object-cover w-full h-48 rounded-md cursor-pointer hover:brightness-75"
                 alt={fundraise.title}
               />
-              <h1 className="text-lg font-semibold underline">
-                {fundraise.title}
-              </h1>
-              <p className="text-sm text-gray-600 underline ">
-                {fundraise.story}
+              <h1 className="mt-2 text-lg font-semibold">{fundraise.title}</h1>
+              <p className="mb-2 text-sm text-gray-600">
+                {fundraise.story.slice(0, 20)}...
               </p>
               <div className="flex justify-end">
                 <Link
