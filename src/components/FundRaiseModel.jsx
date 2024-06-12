@@ -11,6 +11,7 @@ export default function FundRaiseModel({ settoggle }) {
   const [story, setStory] = useState("");
   const [isloading, setisloading] = useState("");
 
+  
   const jwt = localStorage.getItem("jwt");
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
