@@ -35,6 +35,10 @@ export default function UserProfile() {
         <h1 className="text-lg font-semibold text-green-700">HelpingHand</h1>
       </div>
 
+      <div className="mt-6 px-14 md:px-20">
+        <h1 className="text-xl font-semibold">Your Profile</h1>
+      </div>
+
       <div className="flex flex-col items-center justify-center my-10">
         <img
           src={userData?.profilePic}
@@ -55,6 +59,9 @@ export default function UserProfile() {
             FundRaise
           </button>
         </div>
+      </div>
+      <div className="px-14 md:px-20">
+        <h1 className="text-xl font-semibold">Your FundRaisers</h1>
       </div>
       <FundedCards />
       {toggle && <FundRaiseModel settoggle={settoggle} />}

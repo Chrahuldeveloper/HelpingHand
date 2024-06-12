@@ -51,10 +51,7 @@ export default function Home() {
       </div>
       <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
         {featuredCards?.map((fundraise, i) => (
-          <div
-            key={i}
-            className="p-5 space-y-2 bg-white rounded-lg shadow-sm border-[1px] border-gray-200"
-          >
+          <div key={i} className="p-5 space-y-2 bg-white shadow-sm rounded-xl ">
             <img
               src={fundraise.imageUrl}
               className="w-full max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
@@ -64,8 +61,9 @@ export default function Home() {
               {fundraise.title}
             </h1>
             <p className="text-sm text-gray-600 underline">
-              {fundraise.story.slice(0, 50)}...
+              {fundraise.story.slice(0, 80)}...
             </p>
+            <p className="font-semibold ">{fundraise.Hatages}</p>
             <div className="flex justify-end">
               <Link
                 to={"/FullDonation"}
@@ -111,7 +109,7 @@ export default function Home() {
             We've got you covered.
           </h1>
           <p className="leading-8 md:max-w-xl md:text-lg">
-          HelpingHand is a trusted leader in online fundraising. With simple
+            HelpingHand is a trusted leader in online fundraising. With simple
             pricing and a team of Trust & Safety experts in your corner, you can
             raise money or make a donation with peace of mind.
           </p>

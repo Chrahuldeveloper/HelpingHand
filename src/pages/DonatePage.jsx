@@ -36,13 +36,10 @@ export default function DonatePage() {
       </div>
       <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
         {featuredCards?.map((fundraise, i) => (
-          <div
-            key={i}
-            className="p-5 space-y-2 bg-white rounded-lg shadow-sm border-[1px] border-gray-200"
-          >
+          <div key={i} className="p-5 space-y-2 bg-white rounded-lg shadow-sm">
             <img
               src={fundraise.imageUrl}
-              className="object-cover w-full h-48 rounded-lg cursor-pointer hover:brightness-75"
+              className="object-cover w-full h-48 duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
               alt={"Fundraise"}
             />
             <h1 className="mt-2 text-lg font-semibold">{fundraise.title}</h1>

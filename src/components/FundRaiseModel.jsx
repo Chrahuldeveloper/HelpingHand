@@ -9,9 +9,9 @@ export default function FundRaiseModel({ settoggle }) {
   const [imageFile, setImageFile] = useState(null);
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
+  const [Hatages, setHatages] = useState("");
   const [isloading, setisloading] = useState("");
 
-  
   const jwt = localStorage.getItem("jwt");
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -89,13 +89,19 @@ export default function FundRaiseModel({ settoggle }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <input
+          <textarea
             type="text"
             className="border-[1px] border-slate-300 outline-none py-4 px-4 rounded-xl my-3"
             placeholder="Story"
             value={story}
             onChange={(e) => setStory(e.target.value)}
-          />
+          ></textarea>
+          <textarea
+            className="border-[1px] px-4 border-slate-300 outline-none py-4 rounded-xl my-3"
+            placeholder="Hastages"
+            value={Hatages}
+            onChange={(e) => setHatages(e.target.value)}
+          ></textarea>
           <button
             onClick={handleSubmit}
             className="py-2.5 font-semibold text-white bg-green-500"

@@ -40,18 +40,18 @@ export default function FundedCards() {
     <>
       {isLoading && <Loader />}
       {fundraises.length === 0 ? (
-        <div className="flex flex-col items-center justify-center my-10 space-y-2">
+        <div className="flex flex-col items-center justify-center my-6 space-y-2">
           <GiNothingToSay size={120} color="gray" />
           <h1 className="text-sm text-slate-500">
             You have no fundraises yet.
           </h1>
         </div>
       ) : (
-        <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
+        <div className="grid justify-center grid-cols-1 gap-6 px-5 my-6 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
           {fundraises.map((fundraise, i) => (
             <div
               key={i}
-              className="w-[80vw] md:w-[26vw] p-5 space-y-2 bg-white rounded-lg shadow-xs border-[1px] border-slate-200"
+              className="w-[80vw] md:w-[26vw] p-5 space-y-2 bg-white rounded-lg shadow-xs "
             >
               <img
                 src={fundraise.imageUrl}
@@ -60,7 +60,7 @@ export default function FundedCards() {
               />
               <h1 className="mt-2 text-lg font-semibold">{fundraise.title}</h1>
               <p className="mb-2 text-sm text-gray-600">
-                {fundraise.story.slice(0, 20)}...
+                {fundraise.story.slice(0, 80)}...
               </p>
               <div className="flex justify-end">
                 <Link
