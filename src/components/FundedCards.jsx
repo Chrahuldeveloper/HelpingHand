@@ -68,7 +68,7 @@ export default function FundedCards() {
               </p>
               <p className="font-semibold ">{fundraise.Hatages}</p>
               <div className="flex items-end justify-between">
-                <p className="px-10 text-sm font-semibold border-[1px] py-1.5 rounded-full border-gray-300">
+                <p className="px-8 text-sm font-semibold border-[1px] py-1.5 rounded-full border-gray-300">
                   $1000
                 </p>
                 <Link
@@ -79,7 +79,7 @@ export default function FundedCards() {
                     story: fundraise.story,
                   }}
                 >
-                  <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold mt-4">
+                  <button className="border-green-400 border-[1px] px-8 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold mt-4">
                     Donate
                   </button>
                 </Link>

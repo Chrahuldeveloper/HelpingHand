@@ -31,7 +31,7 @@ export default function DonatePage() {
   return (
     <>
       {isLoading && <Loader />}
-     <Navbar/>
+      <Navbar />
       <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
         {featuredCards?.map((fundraise, i) => (
           <div key={i} className="p-5 space-y-2 bg-white rounded-lg shadow-sm">

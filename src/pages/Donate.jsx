@@ -42,7 +42,7 @@ export default function Donate() {
           <img
             src={data.state.img}
             alt=""
-            className="max-w-md mx-auto mt-5 duration-500 ease-in-out rounded-lg md:max-w-xl hover:brightness-75"
+            className="max-w-sm mx-auto mt-5 duration-500 ease-in-out rounded-lg md:max-w-xl hover:brightness-75"
           />
         </div>
       </div>

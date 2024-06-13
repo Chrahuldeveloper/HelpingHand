@@ -48,7 +48,7 @@ export default function Home() {
           <div key={i} className="p-5 space-y-2 bg-white shadow-sm rounded-xl ">
             <img
               src={fundraise.imageUrl}
-              className="w-full max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
+              className="w-full max-w-md duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
               alt={fundraise.title}
             />
 
@@ -60,7 +60,7 @@ export default function Home() {
             </p>
             <p className="font-semibold ">{fundraise.Hatages}</p>
             <div className="flex items-end justify-between">
-              <p className="px-10 text-sm font-semibold border-[1px] py-1.5 rounded-full border-gray-300">
+              <p className="px-8 text-sm font-semibold border-[1px] py-1.5 rounded-full border-gray-300">
                 $1000
               </p>
               <Link
@@ -71,7 +71,7 @@ export default function Home() {
                   story: fundraise.story,
                 }}
               >
-                <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold mt-4">
+                <button className="border-green-400 border-[1px] px-8 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold mt-4">
                   Donate
                 </button>
               </Link>
