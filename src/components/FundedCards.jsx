@@ -47,22 +47,30 @@ export default function FundedCards() {
           </h1>
         </div>
       ) : (
-        <div className="grid justify-center grid-cols-1 gap-6 px-5 my-6 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
-          {fundraises.map((fundraise, i) => (
+        <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
+          {fundraises?.map((fundraise, i) => (
             <div
               key={i}
-              className="w-[80vw] md:w-[26vw] p-5 space-y-2 bg-white rounded-lg shadow-xs "
+              className="p-5 space-y-2 bg-white rounded-lg shadow-sm"
             >
               <img
                 src={fundraise.imageUrl}
-                className="object-cover w-full h-48 rounded-md cursor-pointer hover:brightness-75"
-                alt={fundraise.title}
+                className="w-full max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
+                alt={"Fundraise"}
               />
-              <h1 className="mt-2 text-lg font-semibold">{fundraise.title}</h1>
-              <p className="mb-2 text-sm text-gray-600">
-                {fundraise.story.slice(0, 80)}...
+              <h1 className="mt-2 text-lg font-semibold underline">
+                {fundraise.title}
+              </h1>
+              <p className="mb-2 text-sm text-gray-600 underline">
+                {fundraise.story.length > 100
+                  ? `${fundraise.story.substring(0, 100)}...`
+                  : fundraise.story}
               </p>
-              <div className="flex justify-end">
+              <p className="font-semibold ">{fundraise.Hatages}</p>
+              <div className="flex items-end justify-between">
+                <p className="px-10 text-sm font-semibold border-[1px] py-1.5 rounded-full border-gray-300">
+                  $1000
+                </p>
                 <Link
                   to={"/FullDonation"}
                   state={{
@@ -71,7 +79,7 @@ export default function FundedCards() {
                     story: fundraise.story,
                   }}
                 >
-                  <button className="border-green-400 border-[1px] px-8 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold">
+                  <button className="border-green-400 border-[1px] px-14 py-1.5 rounded-full cursor-pointer hover:bg-green-500 hover:text-white duration-500 ease-in-out text-sm font-semibold mt-4">
                     Donate
                   </button>
                 </Link>

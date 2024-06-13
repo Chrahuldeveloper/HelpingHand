@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Firebase";
-import { Footer, Loader } from "../components";
+import { Footer, Loader, Navbar } from "../components";
 import { Link } from "react-router-dom";
 
 export default function DonatePage() {
@@ -31,9 +31,7 @@ export default function DonatePage() {
   return (
     <>
       {isLoading && <Loader />}
-      <div className="p-8 border-b-[1px] border-gray-300 shadow-sm">
-        <h1 className="text-lg font-semibold text-green-700">HelpingHand</h1>
-      </div>
+     <Navbar/>
       <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
         {featuredCards?.map((fundraise, i) => (
           <div key={i} className="p-5 space-y-2 bg-white rounded-lg shadow-sm">

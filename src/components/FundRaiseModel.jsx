@@ -36,6 +36,7 @@ export default function FundRaiseModel({ settoggle }) {
         title,
         story,
         imageUrl,
+        Hatages,
         createdAt: new Date(),
       };
       const docSnapshot = await getDoc(docRef);
