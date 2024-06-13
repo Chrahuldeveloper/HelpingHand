@@ -32,20 +32,9 @@ export default function Home() {
     <>
       {isLoading ? <Loader /> : null}
       <Navbar />
-      <div className="profile-page">
-        <div className="absolute left-10 md:left-28 top-44 md:top-64">
-          <div className="space-y-3 text-white md:max-w-2xl">
-            <h1 className="text-3xl font-bold md:text-5xl">
-              Make an Impact with Every Donation. Join Us in Creating a Brighter
-              Future{" "}
-            </h1>
-            <p className="max-w-xs leading-7 md:max-w-sm md:text-lg">
-              Every Donation Counts Toward Change,Every Donation Counts Toward
-              Change
-            </p>
-          </div>
-        </div>
-      </div>
+      <Link to={"/Donate"}>
+        <div className="profile-page"></div>
+      </Link>
       <div className="px-8 my-10 space-y-3 md:px-32">
         <h1 className="text-lg font-semibold md:text-3xl">
           Support a fundraiser
