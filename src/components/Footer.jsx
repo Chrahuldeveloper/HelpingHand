@@ -30,11 +30,11 @@ export default function Footer() {
           </div>
           <div>
             <ul className="space-y-3 text-white">
-              <li className="font-semibold cursor-pointer">Home</li>
-              <li className="font-semibold cursor-pointer">About</li>
-              <li className="font-semibold cursor-pointer">Contact</li>
-              <li className="font-semibold cursor-pointer">Email</li>
-              <li className="font-semibold cursor-pointer">Services</li>
+              <li className="font-semibold cursor-pointer">Hyderabad</li>
+              <li className="font-semibold cursor-pointer">Mumbai</li>
+              <li className="font-semibold cursor-pointer">Delhi</li>
+              <li className="font-semibold cursor-pointer">Chennai</li>
+              <li className="font-semibold cursor-pointer">Gujrat</li>
             </ul>
           </div>
           <div>

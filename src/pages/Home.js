@@ -51,6 +51,7 @@ export default function Home() {
               className="w-full max-w-sm duration-500 ease-in-out rounded-lg cursor-pointer hover:brightness-75"
               alt={fundraise.title}
             />
+
             <h1 className="text-lg font-semibold underline">
               {fundraise.title}
             </h1>
@@ -58,7 +59,10 @@ export default function Home() {
               {fundraise.story.slice(0, 80)}...
             </p>
             <p className="font-semibold ">{fundraise.Hatages}</p>
-            <div className="flex justify-end">
+            <div className="flex items-end justify-between">
+              <p className="px-10 text-sm font-semibold border-[1px] py-1.5 rounded-full border-gray-300">
+                $1000
+              </p>
               <Link
                 to={"/FullDonation"}
                 state={{
