@@ -46,8 +46,13 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="px-8 my-10 md:px-32">
-        <h1 className="text-lg font-semibold md:text-2xl">Featured Donates</h1>
+      <div className="px-8 my-10 space-y-3 md:px-32">
+        <h1 className="text-lg font-semibold md:text-3xl">
+          Support a fundraiser
+        </h1>
+        <p className="md:text-lg">
+          Pick a cause close to your heart and donate now
+        </p>
       </div>
       <div className="grid justify-center grid-cols-1 gap-6 px-5 my-10 md:grid-cols-2 lg:grid-cols-3 md:px-20 place-items-center">
         {featuredCards?.map((fundraise, i) => (
